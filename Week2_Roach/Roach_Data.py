@@ -3,6 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.fft import *
 from subprocess import call
+import os
 
-a = np.fromfile('abc_bram',count=-1,sep=" ")
+os.system('scp ./RoachCommands.py root@roach:~/')
+#os.system('ssh root@roach ls')
+os.system('ssh root@roach rm ./RoachCommands.py')
+#os.system('ssh root@roach ls')
+#a = np.fromfile('abc_bram',dtype='>i')
 
