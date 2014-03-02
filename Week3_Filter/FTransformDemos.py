@@ -3,6 +3,7 @@ import numpy as np
 from numpy.fft import *
 from matplotlib import pyplot as plt
 import radiolab
+import os
 
 N = 8
 Window = 5 # Centered window
