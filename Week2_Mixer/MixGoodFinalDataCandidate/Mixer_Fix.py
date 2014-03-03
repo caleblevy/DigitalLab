@@ -1,4 +1,4 @@
-#! /usr/bin/clevy
+#!/usr/bin/env python
 import numpy as np
 import radiolab
 import matplotlib.pyplot as plt
@@ -32,7 +32,6 @@ print 'Difference of Frequencies'
 print 'nu_lo=',nu_lo
 print 'nu_sig_minus=',nu_sig_minus
 
-raw_input()
 
 if SetSRS:
 	radiolab.set_srs(2,nu_lo,dbm=P_lo,off=0.0,pha=0.0)
@@ -74,7 +73,6 @@ print 'Sum of Frequencies'
 print 'nu_lo=',nu_lo
 print 'nu_sig_plus=',nu_sig_plus
 
-raw_input()
 
 if SetSRS:
 	radiolab.set_srs(2,nu_lo,dbm=P_lo,off=0.0,pha=0.0)
@@ -106,5 +104,20 @@ plt.xlabel('Frequency (Hz)')
 plt.ylabel('Volts$^2$ ($V^2$)')
 plt.title('Power spectrum of signal data in frequency space of nu_lo+d_nu')
 plt.savefig('MixerAnFourrier_Plus.pdf')
+
+
+Filter_Copy = fft(MixPlus)
+low_Point = 2*d_nu
+Freq_Cmp = fftshift(FreqAx)
+for I in range(int(N_samp)):
+	if abs(Freq_Cmp[I]) > low_Point:
+		Filter_Copy[I] = 0
+
+plt.figure(4)
+plt.plot(fftshift(abs(Filter_Copy)))
+
+Filter_Phys = ifft(Filter_Copy)
+plt.figure(5)
+plt.plot(t,Filter_Phys[0:Period])
 
 plt.show()

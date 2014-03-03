@@ -1,4 +1,4 @@
-#! /usr/bin/clevy
+#!/usr/bin/env python
 import numpy as np
 import radiolab
 import matplotlib.pyplot as plt
