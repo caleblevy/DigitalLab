@@ -4,6 +4,7 @@ from numpy.fft import *
 from matplotlib import pyplot as plt
 import radiolab
 import os
+from RoachNum import *
 
 N = 8
 Window = 5 # Centered window
@@ -18,3 +19,9 @@ FirPhys = ifft(FirShift)
 FirCoeffs = fftshift(FirPhys)
 FirCoeffs = np.real(FirCoeffs)
 
+HexCoeffs = [None]*N
+
+for I in range(N):
+	HexCoeffs[I] = Fix_18_17(FirCoeffs[I])
+
+print HexCoeffs	

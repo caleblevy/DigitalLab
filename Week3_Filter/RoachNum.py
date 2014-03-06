@@ -35,7 +35,13 @@ def To_Binary(num,Prec,start):
 		Bin_Num[Prec-J] = 1
 		
 	return Bin_Num
-	
+
+def Bin_Txt(List):
+	N = len(List)
+	Text = ''
+	for I in range(N):
+		Text = Text + str(List[I])
+	return Text
 
 def Hex_Dict(List):
 	List = List[:]
